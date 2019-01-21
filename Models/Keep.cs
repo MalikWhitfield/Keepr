@@ -8,9 +8,11 @@ namespace keepr.Models
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        [Required]
+        public string Img { get; set; }
         public bool isPrivate { get; set; }
         [Required]
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public int Views { get; set; }
         public int VaultAdds { get; set; }
     }

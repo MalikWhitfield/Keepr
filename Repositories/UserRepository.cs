@@ -54,11 +54,6 @@ namespace keepr.Repositories
             user.Hash = null;
             return user;
         }
-        public IEnumerable<User> GetAll()
-        {
-            return _db.Query<User>("SELECT $ From User");
-        }
-
         internal User GetUserById(string id)
         {
             var user = _db.Query<User>(@"

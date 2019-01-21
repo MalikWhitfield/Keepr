@@ -31,9 +31,11 @@ namespace Keepr.Controllers
             return BadRequest();
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult<List<Keep>> Post([FromBody] Keep keep)
         {
+            keep.UserId = HttpContext.User.Identity.Name;
             Keep result = _repo.AddKeep(keep);
             return Created("api/keeps/" + result.Id, result);
         }

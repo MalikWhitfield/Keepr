@@ -30,10 +30,11 @@ namespace Keepr.Controllers
             }
             return BadRequest();
         }
-
+        [Authorize]
         [HttpPost]
         public ActionResult<List<VaultKeep>> Post([FromBody] VaultKeep VaultKeep)
         {
+            VaultKeep.UserId = HttpContext.User.Identity.Name;
             VaultKeep result = _repo.AddVaultKeep(VaultKeep);
             return Created("api/VaultKeeps/" + result.Id, result);
         }

@@ -30,10 +30,11 @@ namespace Keepr.Controllers
             }
             return BadRequest();
         }
-
+        [Authorize]
         [HttpPost]
-        public ActionResult<List<Vault>> Post([FromBody] Vault Vault)
+        public ActionResult<Vault> Post([FromBody] Vault Vault)
         {
+            Vault.UserId = HttpContext.User.Identity.Name;
             Vault result = _repo.AddVault(Vault);
             return Created("api/Vaults/" + result.Id, result);
         }
@@ -52,10 +53,11 @@ namespace Keepr.Controllers
                 return NotFound("NO SUCH Vault");
             }
         }
-
+        [Authorize]
         [HttpDelete("{id}")]
         public ActionResult<string> Delete(int id)
         {
+            string uid = HttpContext.User.Identity.Name;
             if (_repo.DeleteVault(id))
             {
                 return Ok("Successfully Deleted!");
