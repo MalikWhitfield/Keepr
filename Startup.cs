@@ -82,6 +82,7 @@ namespace Keepr
             else
             {
                 app.UseHsts();
+                app.UseCors("CorsDevPolicy");
             }
             app.UseAuthentication();
             app.UseDefaultFiles();

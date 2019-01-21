@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace keepr.Models
 {
@@ -8,6 +9,7 @@ namespace keepr.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public bool isPrivate { get; set; }
+        [Required]
         public int UserId { get; set; }
         public int Views { get; set; }
         public int VaultAdds { get; set; }

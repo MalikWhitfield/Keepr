@@ -7,7 +7,7 @@ Vue.use(Vuex)
 
 let auth = Axios.create({
   baseURL: "http://localhost:5000/account/",
-  timeout: 3000,
+  timeout: 10000,
   withCredentials: true
 })
 
