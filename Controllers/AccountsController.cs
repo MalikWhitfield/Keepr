@@ -12,10 +12,10 @@ namespace Keepr.Controllers
 {
     [Route("account")]
     [ApiController]
-    public class AccountController : ControllerBase
+    public class AccountsController : ControllerBase
     {
         private readonly UserRepository _repo;
-        public AccountController(UserRepository repo)
+        public AccountsController(UserRepository repo)
         {
             _repo = repo;
         }

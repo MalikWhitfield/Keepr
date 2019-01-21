@@ -12,10 +12,10 @@ namespace Keepr.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class VaultController : ControllerBase
+    public class VaultsController : ControllerBase
     {
         private readonly VaultRepository _repo;
-        public VaultController(VaultRepository repo)
+        public VaultsController(VaultRepository repo)
         {
             _repo = repo;
         }
@@ -36,7 +36,7 @@ namespace Keepr.Controllers
         {
             Vault.UserId = HttpContext.User.Identity.Name;
             Vault result = _repo.AddVault(Vault);
-            return Created("api/Vaults/" + result.Id, result);
+            return Created("api/vaults/" + result.Id, result);
         }
 
         [HttpPut("{id}")]
