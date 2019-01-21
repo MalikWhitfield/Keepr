@@ -20,7 +20,15 @@ namespace Keepr.Controllers
             _repo = repo;
         }
 
+        //GET ALL KEEPS
         [HttpGet]
+        public ActionResult<IEnumerable<Keep>> GetAllKeeps()
+        {
+            return Ok(_repo.GetAll());
+        }
+
+        //FOR A SINGLE KEEP
+        [HttpGet("{id}")]
         public ActionResult<Keep> Get(int id)
         {
             Keep result = _repo.GetKeepById(id);
@@ -31,6 +39,7 @@ namespace Keepr.Controllers
             return BadRequest();
         }
 
+        //POST A KEEP
         [Authorize]
         [HttpPost]
         public ActionResult<List<Keep>> Post([FromBody] Keep keep)
@@ -40,6 +49,7 @@ namespace Keepr.Controllers
             return Created("api/keeps/" + result.Id, result);
         }
 
+        //EDIT INDIVIDUAL KEEPS
         [HttpPut("{id}")]
         public ActionResult<Keep> Put(int id, [FromBody] Keep keep)
         {

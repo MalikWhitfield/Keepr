@@ -47,7 +47,7 @@ namespace keepr.Models
         {
             var claims = new List<Claim>{
                 new Claim(ClaimTypes.Email, Email),
-                new Claim(ClaimTypes.Name, Id) //req.session.uid = id
+                new Claim(ClaimTypes.Name, Id) //req.session.uid = id As soon as we log in, we create a name and give it the user id value
             };
             var userIdentity = new ClaimsIdentity(claims, "login");
             _principal = new ClaimsPrincipal(userIdentity);
