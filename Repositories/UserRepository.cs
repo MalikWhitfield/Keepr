@@ -4,6 +4,7 @@ using System.Linq;
 using BCrypt.Net;
 using keepr.Models;
 using Dapper;
+using System.Collections.Generic;
 
 namespace keepr.Repositories
 {
@@ -52,6 +53,10 @@ namespace keepr.Repositories
             if (!validPass) { return null; }
             user.Hash = null;
             return user;
+        }
+        public IEnumerable<User> GetAll()
+        {
+            return _db.Query<User>("SELECT $ From User");
         }
 
         internal User GetUserById(string id)

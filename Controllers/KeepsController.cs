@@ -10,20 +10,20 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Keepr.Controllers
 {
-    [Route("api/vaults")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class VaultController : ControllerBase
+    public class KeepController : ControllerBase
     {
-        private readonly VaultRepository _repo;
-        public VaultController(VaultRepository repo)
+        private readonly KeepRepository _repo;
+        public KeepController(KeepRepository repo)
         {
             _repo = repo;
         }
 
         [HttpGet]
-        public ActionResult<Vault> Get(int id)
+        public ActionResult<Keep> Get(int id)
         {
-            Vault result = _repo.GetVaultById(id);
+            Keep result = _repo.GetKeepById(id);
             if (result != null)
             {
                 return Ok(result);
@@ -32,31 +32,31 @@ namespace Keepr.Controllers
         }
 
         [HttpPost]
-        public ActionResult<List<Vault>> Post([FromBody] Vault Vault)
+        public ActionResult<List<Keep>> Post([FromBody] Keep keep)
         {
-            Vault result = _repo.AddVault(Vault);
-            return Created("api/Vaults/" + result.Id, result);
+            Keep result = _repo.AddKeep(keep);
+            return Created("api/keeps/" + result.Id, result);
         }
 
         [HttpPut("{id}")]
-        public ActionResult<Vault> Put(int id, [FromBody] Vault Vault)
+        public ActionResult<Keep> Put(int id, [FromBody] Keep keep)
         {
             try
             {
-                Vault updatedVault = _repo.EditVault(id, Vault);
-                return updatedVault;
+                Keep updatedKeep = _repo.EditKeep(id, keep);
+                return updatedKeep;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
-                return NotFound("NO SUCH Vault");
+                return NotFound("NO SUCH KEEP");
             }
         }
 
         [HttpDelete("{id}")]
         public ActionResult<string> Delete(int id)
         {
-            if (_repo.DeleteVault(id))
+            if (_repo.DeleteKeep(id))
             {
                 return Ok("Successfully Deleted!");
             }
