@@ -24,13 +24,17 @@ namespace keepr.Repositories
         public Keep AddKeep(Keep newKeep)
         {
             int id = _db.ExecuteScalar<int>(@"
-            INSERT INTO Keeps(name, description, isPrivate)
-            VALUES(@Name, @Description, @isPrivate)
+            INSERT INTO keeps(name, description, img, isPrivate, userId)
+            VALUES(@Name, @Description, @Img, @isPrivate, @UserId)
             ", newKeep);
             newKeep.Id = id;
             return newKeep;
         }
 
+        public IEnumerable<Keep> GetKeepsByUserId(string id)
+        {
+            return _db.Query<Keep>("SELECT * FROM Keeps WHERE userId = @id", new { id });
+        }
 
         public Keep EditKeep(int id, Keep newKeep)
         {
@@ -50,6 +54,8 @@ namespace keepr.Repositories
                 return null;
             }
         }
+
+        //DELETE KEEP
         public bool DeleteKeep(int id)
         {
             int success = _db.Execute("DELETE FROM Keeps WHERE id = @id", new { id });

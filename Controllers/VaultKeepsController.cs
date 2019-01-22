@@ -20,44 +20,53 @@ namespace Keepr.Controllers
             _repo = repo;
         }
 
-        [HttpGet]
-        public ActionResult<VaultKeep> Get(int id)
+        //GET VAULTKEEPS
+        [HttpGet("vaultId")]
+        public IEnumerable<Keep> GetKeepsByVaultId(int vaultId)
         {
-            VaultKeep result = _repo.GetVaultKeepById(id);
-            if (result != null)
-            {
-                return Ok(result);
-            }
-            return BadRequest();
+            return _repo.GetAllVaultKeeps(vaultId);
         }
+
+
+        //POST A VAULTKEEP
         [Authorize]
         [HttpPost]
         public ActionResult<List<VaultKeep>> Post([FromBody] VaultKeep VaultKeep)
         {
             VaultKeep.UserId = HttpContext.User.Identity.Name;
-            VaultKeep result = _repo.AddVaultKeep(VaultKeep);
-            return Created("api/VaultKeeps/" + result.Id, result);
+            if (VaultKeep.UserId != null)
+            {
+                VaultKeep result = _repo.AddVaultKeep(VaultKeep);
+                return Created("api/VaultKeeps/" + result.Id, result);
+            }
+            return BadRequest("Unable to create vaultkeep");
         }
 
-        [HttpPut("{id}")]
-        public ActionResult<VaultKeep> Put(int id, [FromBody] VaultKeep VaultKeep)
-        {
-            try
-            {
-                VaultKeep updatedVaultKeep = _repo.EditVaultKeep(id, VaultKeep);
-                return updatedVaultKeep;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                return NotFound("NO SUCH VaultKeep");
-            }
-        }
+        //EDIT VAULT KEEPS
+        #region
+        // [HttpPut("{id}")]
+        // public ActionResult<VaultKeep> Put(int id, [FromBody] VaultKeep VaultKeep)
+        // {
+        //     try
+        //     {
+        //         VaultKeep updatedVaultKeep = _repo.EditVaultKeep(id, VaultKeep);
+        //         return updatedVaultKeep;
+        //     }
+        //     catch (Exception ex)
+        //     {
+        //         Console.WriteLine(ex);
+        //         return NotFound("NO SUCH VaultKeep");
+        //     }
+        // }
+        #endregion
 
+
+        //DELETE KEEPS FROM VAULTS
         [HttpDelete("{id}")]
-        public ActionResult<string> Delete(int id)
+        public ActionResult<string> Delete([FromBody]VaultKeep vaultKeep)
         {
-            if (_repo.DeleteVaultKeep(id))
+            var result = _repo.DeleteVaultKeep(vaultKeep);
+            if (result != false)
             {
                 return Ok("Successfully Deleted!");
             }

@@ -11,7 +11,6 @@ namespace keepr.Models
         [Required]
         public string Img { get; set; }
         public int isPrivate { get; set; }
-        [Required]
         public string UserId { get; set; }
         public int Views { get; set; }
         public int VaultAdds { get; set; }

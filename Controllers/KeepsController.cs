@@ -20,24 +20,26 @@ namespace Keepr.Controllers
             _repo = repo;
         }
 
-        //GET ALL KEEPS
+        //GET ALL PUBLIC KEEPS
         [HttpGet]
         public ActionResult<IEnumerable<Keep>> GetAllKeeps()
         {
             return Ok(_repo.GetAll());
         }
 
-        //FOR A SINGLE KEEP
-        [HttpGet("{id}")]
-        public ActionResult<Keep> Get(int id)
+        //GET USER KEEPs
+        [HttpGet("user")]
+        public ActionResult<IEnumerable<Keep>> GetUserKeeps()
         {
-            Keep result = _repo.GetKeepById(id);
+            var id = HttpContext.User.Identity.Name;
+            IEnumerable<Keep> result = _repo.GetKeepsByUserId(id);
             if (result != null)
             {
                 return Ok(result);
             }
             return BadRequest();
         }
+
 
         //POST A KEEP
         [Authorize]
@@ -47,6 +49,7 @@ namespace Keepr.Controllers
             keep.UserId = HttpContext.User.Identity.Name;
             Keep result = _repo.AddKeep(keep);
             return Created("api/keeps/" + result.Id, result);
+
         }
 
         //EDIT INDIVIDUAL KEEPS
@@ -64,6 +67,8 @@ namespace Keepr.Controllers
                 return NotFound("NO SUCH KEEP");
             }
         }
+
+
 
         [HttpDelete("{id}")]
         public ActionResult<string> Delete(int id)

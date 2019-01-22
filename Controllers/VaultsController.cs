@@ -36,6 +36,8 @@ namespace Keepr.Controllers
             }
             return BadRequest();
         }
+
+        //POST A VAULT
         [Authorize]
         [HttpPost]
         public ActionResult<Vault> Post([FromBody] Vault Vault)
@@ -63,7 +65,7 @@ namespace Keepr.Controllers
         [HttpDelete("{id}")]
         public ActionResult<string> Delete(int id)
         {
-            string uid = HttpContext.User.Identity.Name;
+            // string uid = HttpContext.User.Identity.Name;
             if (_repo.DeleteVault(id))
             {
                 return Ok("Successfully Deleted!");

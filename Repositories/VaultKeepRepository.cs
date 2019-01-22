@@ -13,19 +13,22 @@ namespace keepr.Repositories
         {
             _db = db;
         }
-        public IEnumerable<VaultKeep> GetAll()
+        public IEnumerable<Keep> GetAllVaultKeeps(int vaultId)
         {
-            return _db.Query<VaultKeep>("SELECT * FROM VaultKeeps");
+            return _db.Query<Keep>(@"SELECT * FROM VaultKeeps vk
+            INNER JOIN keeps k ON k.id = vk.keepId
+            WHERE(vk.vaultId= @VaultId);",
+            new { vaultId });
         }
-        public VaultKeep GetVaultKeepById(int id)
-        {
-            return _db.QueryFirstOrDefault<VaultKeep>($"SELECT * FROM VaultKeeps WHERE id = @id", new { id });
-        }
+        // public VaultKeep GetVaultsKeepById(int id)
+        // {
+        //     return _db.QueryFirstOrDefault<VaultKeep>($"SELECT * FROM VaultKeeps WHERE id = @id", new { id });
+        // }
         public VaultKeep AddVaultKeep(VaultKeep newVaultKeep)
         {
             int id = _db.ExecuteScalar<int>(@"
-            INSERT INTO VaultKeeps(title, description, isPrivate)
-            VALUES(@Title, @Description, @isPrivate)
+            INSERT INTO VaultKeeps(vaultId, keepId, userId)
+            VALUES(@VaultId, @KeepId, @UserId)
             ", newVaultKeep);
             newVaultKeep.Id = id;
             return newVaultKeep;
@@ -48,9 +51,11 @@ namespace keepr.Repositories
                 return null;
             }
         }
-        public bool DeleteVaultKeep(int id)
+
+
+        public bool DeleteVaultKeep(VaultKeep vaultKeep)
         {
-            int success = _db.Execute("DELETE FROM VaultKeeps WHERE id = @id", new { id });
+            int success = _db.Execute(@"DELETE FROM VaultKeeps WHERE keepId = @KeepId AND vaultId = @VaultId", vaultKeep);
             return success != 0;
         }
     }

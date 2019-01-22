@@ -13,14 +13,20 @@ namespace keepr.Repositories
         {
             _db = db;
         }
+
+        //GET VAULTS BY USERID
         public IEnumerable<Vault> GetAll(string userId)
         {
             return _db.Query<Vault>("SELECT * FROM Vaults WHERE userId = @userId", new { userId });
         }
+
+        //GET A SINGLE VAULT
         public Vault GetVaultById(int id)
         {
             return _db.QueryFirstOrDefault<Vault>($"SELECT * FROM Vaults WHERE id = @id", new { id });
         }
+
+        //POST A VAULT
         public Vault AddVault(Vault newVault)
         {
             int id = _db.ExecuteScalar<int>(@"
@@ -48,6 +54,9 @@ namespace keepr.Repositories
                 return null;
             }
         }
+
+
+        //dELETE VAULT
         public bool DeleteVault(int id)
         {
             int success = _db.Execute("DELETE FROM Vaults WHERE id = @id", new { id });
