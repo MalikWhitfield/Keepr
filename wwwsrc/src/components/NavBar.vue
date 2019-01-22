@@ -1,9 +1,10 @@
 <template>
     <div class="navbar">
-        <div class="row nav-background">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a href="navbar-brand" href="#">Navbar</a>
-            </nav>
+        <div class="row nav-background justify-content-space-between">
+            <div class="col-12 navbar navbar-expand-lg navbar-light bg-light">
+                <a href="">Navbar</a>
+                <a class="ml-3" href="">My Vaults</a>
+            </div>
         </div>
     </div>
 </template>
@@ -16,7 +17,11 @@
                 loggedIn: false
             }
         },
-        computed: {},
+        computed: {
+            user() {
+                this.$store.state.user;
+            }
+        },
         methods: {}
     }
 

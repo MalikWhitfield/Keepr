@@ -73,7 +73,32 @@ export default new Vuex.Store({
           console.log('Login Failed')
         })
     },
+    logout({ commit, dispatch }) {
+      auth.delete('logout')
+        .then(res => {
+          router.push({ name: 'home' })
+          commit('setUser', {})
+        })
+    },
 
     //KEEPS
+    getKeeps({ commit, dispatch }) {
+      api.get('keeps')
+        .then(res => {
+          commit('setKeeps', res.data)
+        })
+    },
+    addKeep({ commit, dispatch }, keepData) {
+      api.post('keeps', keepData)
+        .then(server => {
+          dispatch('getKeeps')
+        })
+    },
+    deleteVaultKeep({ commit, dispatch }, vaultKeepId) {
+      api.delete('keeps/' + vaultKeepId)
+        .then(res => {
+          dispatch('getKeeps')
+        })
+    }
   }
 })
