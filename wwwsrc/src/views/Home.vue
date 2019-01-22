@@ -13,9 +13,9 @@
             <h1>{{keep.name}}</h1>
           </div>
           <img class="card-img-top" :src="keep.img">
-          <div class="card-body">
-            <i class="far fa-eye">{{keep.views}}</i>
-            <h6>Vault Adds: {{keep.vaultAdds}}</h6>
+          <div class="card-body d-flex justify-content-space-between">
+            <i class="far fa-eye">: {{keep.views}}</i>
+            <i class="fas fa-camera-retro">: {{keep.vaultAdds}}</i>
           </div>
         </div>
       </div>
