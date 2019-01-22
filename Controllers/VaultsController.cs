@@ -19,14 +19,17 @@ namespace Keepr.Controllers
         {
             _repo = repo;
         }
-        [HttpGet] //GET ALL USER VAULTS
+        
+        //GET ALL USER VAULTS
+        [HttpGet] 
         public ActionResult<IEnumerable<Vault>> GetAllVaultsByUserId()
         {
             var userId = HttpContext.User.Identity.Name;
             return Ok(_repo.GetAll(userId));
         }
-
-        [HttpGet("{id}")] //GET A SINGLE VAULT
+        
+         //GET A SINGLE VAULT
+        [HttpGet("{id}")]
         public ActionResult<Vault> Get(int id)
         {
             Vault result = _repo.GetVaultById(id);
