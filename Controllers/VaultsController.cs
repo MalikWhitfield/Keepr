@@ -53,6 +53,8 @@ namespace Keepr.Controllers
         [HttpPut("{id}")]
         public ActionResult<Vault> Put(int id, [FromBody] Vault Vault)
         {
+            Vault.UserId = HttpContext.User.Identity.Name;
+            Vault.Id = id;
             try
             {
                 Vault updatedVault = _repo.EditVault(id, Vault);

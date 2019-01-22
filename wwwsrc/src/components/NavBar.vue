@@ -1,10 +1,12 @@
 <template>
-    <div class="navbar">
-        <div class="row nav-background justify-content-space-between">
-            <div class="col-12 navbar navbar-expand-lg navbar-light bg-light">
+    <div class="">
+        <div class="row navbar nav-background justify-content-space-between">
+            <nav class="col-12-sm col-12-lg navbar navbar-expand-lg navbar-light bg-light">
                 <a href="">Navbar</a>
                 <a class="ml-3" href="">My Vaults</a>
-            </div>
+                <button v-if="user._id">Login</button>
+                <button v-if="!user._id" class="btn btn-outline-light hover" @click="logout">Logout</button>
+            </nav>
         </div>
     </div>
 </template>
@@ -19,10 +21,14 @@
         },
         computed: {
             user() {
-                this.$store.state.user;
+                return this.$store.state.user;
             }
         },
-        methods: {}
+        methods: {
+            logout() {
+                this.$store.dispatch("logout");
+            }
+        }
     }
 
 </script>

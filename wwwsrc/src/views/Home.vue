@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="row d-flex justify-content-around">
-      <div v-for="keep in keeps" :key="keep">
+      <div v-for="keep in keeps" :key="keep.id">
         <div class="card" style="width: 15rem">
           <div class="card-header d-flex justify-content-between">
             <h1>{{keep.name}}</h1>
