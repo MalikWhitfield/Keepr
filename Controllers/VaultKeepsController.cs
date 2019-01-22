@@ -21,12 +21,11 @@ namespace Keepr.Controllers
         }
 
         //GET VAULTKEEPS
-        [HttpGet("vaultId")]
-        public IEnumerable<Keep> GetKeepsByVaultId(int vaultId)
+        [HttpGet("{vaultId}")]
+        public IEnumerable<Keep> Get(int vaultId)
         {
-            return _repo.GetAllVaultKeeps(vaultId);
+            return _repo.GetKeepsFromVault(vaultId);
         }
-
 
         //POST A VAULTKEEP
         [Authorize]

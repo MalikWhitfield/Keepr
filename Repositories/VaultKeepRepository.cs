@@ -13,7 +13,7 @@ namespace keepr.Repositories
         {
             _db = db;
         }
-        public IEnumerable<Keep> GetAllVaultKeeps(int vaultId)
+        public IEnumerable<Keep> GetKeepsFromVault(int vaultId)
         {
             return _db.Query<Keep>(@"
             SELECT * FROM VaultKeeps vk
@@ -21,9 +21,9 @@ namespace keepr.Repositories
             WHERE(vk.VaultId= @VaultId);",
             new { vaultId });
         }
-        // public VaultKeep GetVaultsKeepById(int id)
+        // public Vault GetOneVault(int id)
         // {
-        //     return _db.QueryFirstOrDefault<VaultKeep>($"SELECT * FROM VaultKeeps WHERE id = @id", new { id });
+        //     return _db.Query<Vault>($"SELECT * FROM vaults WHERE id = @Id", new { id });
         // }
         public VaultKeep AddVaultKeep(VaultKeep newVaultKeep)
         {
