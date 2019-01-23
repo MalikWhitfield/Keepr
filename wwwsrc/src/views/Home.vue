@@ -10,9 +10,9 @@
       <div v-for="keep in keeps" :key="keep.id">
         <div class="card mb-2" style="width: 16rem">
           <div class="card-header d-flex justify-content-start">
-            <h1>{{keep.name}}</h1>
+            <h5>{{keep.name}}</h5>
           </div>
-          <img class="card-img-top hover" :src="keep.img">
+          <img class="card-img-top hover card-images" :src="keep.img">
           <div class="card-body d-flex justify-content-center">
             <i class="far fa-eye">: {{keep.views}}</i>
             <i class="fas fa-camera-retro ml-3">: {{keep.vaultAdds}}</i>
@@ -63,5 +63,8 @@ export default {
 }
 .hover {
   cursor: pointer;
+}
+.card-images {
+  min-height: 14rem;
 }
 </style>
