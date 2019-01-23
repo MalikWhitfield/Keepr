@@ -12,10 +12,11 @@
           <div class="card-header d-flex justify-content-start">
             <h1>{{keep.name}}</h1>
           </div>
-          <img class="card-img-top" :src="keep.img">
+          <img class="card-img-top hover" :src="keep.img">
           <div class="card-body d-flex justify-content-center">
             <i class="far fa-eye">: {{keep.views}}</i>
-            <i class="fas fa-camera-retro ml-5">: {{keep.vaultAdds}}</i>
+            <i class="fas fa-camera-retro ml-3">: {{keep.vaultAdds}}</i>
+            <i class="fas fa-plus-square ml-3"></i>
           </div>
         </div>
       </div>
@@ -29,9 +30,9 @@ export default {
   name: "home",
   mounted() {
     //blocks users not logged in
-    if (!this.$store.state.user.id) {
-      this.$router.push({ name: "login" });
-    }
+    // if (!this.$store.state.user.id) {
+    //   this.$router.push({ name: "home" });
+    // }
     this.$store.dispatch("getAllKeeps");
   },
   computed: {
@@ -59,5 +60,8 @@ export default {
 .bg-color {
   background-color: white;
   size: 100vh;
+}
+.hover {
+  cursor: pointer;
 }
 </style>
