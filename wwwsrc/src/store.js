@@ -129,6 +129,12 @@ export default new Vuex.Store({
           commit('setVaults', res.data)
         })
     },
+    addVault({ commit, dispatch }, newVault) {
+      api.post('vaults')
+        .then(res => {
+          dispatch('getUserVaults', res.data)
+        })
+    }
 
   }
 })

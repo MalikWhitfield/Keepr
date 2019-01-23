@@ -67,7 +67,6 @@
               <button class="btn" type="submit">Add Keep</button>
             </form>
           </div>
-          <div class="modal-footer d-flex justify-content-center"></div>
         </div>
       </div>
     </div>
