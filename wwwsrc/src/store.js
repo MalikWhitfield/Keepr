@@ -96,10 +96,11 @@ export default new Vuex.Store({
           commit('setKeeps', res.data)
         })
     },
-    addKeep({ commit, dispatch }, keepData) {
-      api.post('keeps', keepData)
+    addKeep({ commit, dispatch }, newKeep) {
+      api.post('keeps', newKeep)
         .then(server => {
-          dispatch('getKeeps')
+          // dispatch('getKeeps')
+          dispatch('getKeepsByUserId')
         })
     },
     getKeepsByUserId({ commit, dispatch }, userId) {

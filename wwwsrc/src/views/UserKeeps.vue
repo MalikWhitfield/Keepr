@@ -26,32 +26,48 @@
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header text-center">
+          <div class="modal-header text-center align-items-center">
             <h4>Add Keep</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body mx-3">
-            <div class="md-form mb-5">
-              <i class="fas fa-tag"></i>
-              <input type="text" id="keepForm-name" class="form-control validate">
-              <label for="keepForm-name">Name</label>
-            </div>
-            <div class="md-form mb-3">
-              <i class="fas fa-align-justify"></i>
-              <input type="text" id="keepForm-desc" class="form-control validate">
-              <label for="keepForm-desc">Description</label>
-            </div>
-            <div class="md-form mb-3">
-              <i class="fas fa-image"></i>
-              <input type="text" id="keepForm-url" class="form-control validate">
-              <label for="keepForm-url">URL</label>
-            </div>
+            <form @submit.prevent="addKeep">
+              <div class="md-form mb-2">
+                <i class="fas fa-tag"></i>
+                <input
+                  type="text"
+                  id="keepForm-name"
+                  class="form-control validate"
+                  placeholder="Name"
+                  v-model="newKeep.name"
+                >
+              </div>
+              <div class="md-form mb-2">
+                <i class="fas fa-align-justify"></i>
+                <input
+                  type="text"
+                  id="keepForm-desc"
+                  class="form-control validate"
+                  placeholder="Description"
+                  v-model="newKeep.description"
+                >
+              </div>
+              <div class="md-form mb-2">
+                <i class="fas fa-image"></i>
+                <input
+                  type="text"
+                  id="keepForm-url"
+                  class="form-control validate"
+                  placeholder="Image URL"
+                  v-model="newKeep.img"
+                >
+              </div>
+              <button class="btn" type="submit">Add Keep</button>
+            </form>
           </div>
-          <div class="modal-footer d-flex justify-content-center">
-            <button class="btn">Add Keep</button>
-          </div>
+          <div class="modal-footer d-flex justify-content-center"></div>
         </div>
       </div>
     </div>
@@ -83,7 +99,12 @@ export default {
   name: "",
   data() {
     return {
-      showAddKeep: false
+      showAddKeep: false,
+      newKeep: {
+        name: "",
+        descripton: "",
+        img: ""
+      }
     };
   },
   mounted() {
@@ -97,7 +118,11 @@ export default {
       return this.$store.state.userKeeps;
     }
   },
-  methods: {},
+  methods: {
+    addKeep() {
+      this.$store.dispatch("addKeep", this.newKeep);
+    }
+  },
   components: {
     Navbar
   }
