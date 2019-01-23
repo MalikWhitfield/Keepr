@@ -1,5 +1,5 @@
 <template>
-  <div class="home container-fluid">
+  <div class="home bg-color container-fluid">
     <navbar></navbar>
     <div class="row">
       <div class="col-12">
@@ -8,14 +8,14 @@
     </div>
     <div class="row d-flex justify-content-around">
       <div v-for="keep in keeps" :key="keep.id">
-        <div class="card" style="width: 15rem">
-          <div class="card-header d-flex justify-content-between">
+        <div class="card mb-2" style="width: 16rem">
+          <div class="card-header d-flex justify-content-start">
             <h1>{{keep.name}}</h1>
           </div>
           <img class="card-img-top" :src="keep.img">
-          <div class="card-body d-flex justify-content-space-between">
+          <div class="card-body d-flex justify-content-center">
             <i class="far fa-eye">: {{keep.views}}</i>
-            <i class="fas fa-camera-retro">: {{keep.vaultAdds}}</i>
+            <i class="fas fa-camera-retro ml-5">: {{keep.vaultAdds}}</i>
           </div>
         </div>
       </div>
@@ -32,7 +32,7 @@ export default {
     if (!this.$store.state.user.id) {
       this.$router.push({ name: "login" });
     }
-    this.$store.dispatch("getKeeps");
+    this.$store.dispatch("getAllKeeps");
   },
   computed: {
     keeps() {
@@ -52,3 +52,12 @@ export default {
   }
 };
 </script>
+<style>
+.card-header {
+  background-color: #7de2d1;
+}
+.bg-color {
+  background-color: white;
+  size: 100vh;
+}
+</style>

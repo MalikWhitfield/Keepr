@@ -4,7 +4,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 // @ts-ignore
 import Login from './views/Login.vue'
-
+import UserProfile from './views/UserProfile.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -18,6 +18,11 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/myvaults',
+      name: 'UserProfile',
+      component: UserProfile
     }
   ]
 })
