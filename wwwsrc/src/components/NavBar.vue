@@ -3,7 +3,7 @@
     <div class="row nav-background d-flex justify-content-space-between justify-content-end">
       <nav class="navbar col-12-sm col-12-lg navbar navbar-expand-lg navbar-light">
         <a class="btn" href="home">Home</a>
-        <router-link class="btn" :to="{name: 'userprofile', params: {userId: user._id}}">My Profile</router-link>
+        <router-link class="btn" :to="{name: 'UserVaults', params: {userId: user._id}}">My Profile</router-link>
         <button v-if="user._id">Login</button>
         <button v-if="!user._id" class="btn hover" @click="logout">Logout</button>
       </nav>

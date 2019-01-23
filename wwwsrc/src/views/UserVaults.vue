@@ -16,7 +16,7 @@
 <script>
     import Navbar from "@/components/NavBar.vue"
     export default {
-        name: "UserProfile",
+        name: "UserVaults",
         data() {
             return {
 
