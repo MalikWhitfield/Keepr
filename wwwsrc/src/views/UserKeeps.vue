@@ -78,6 +78,7 @@
           <div class="card mb-2 mr-2" style="width: 16rem">
             <div class="card-header d-flex justify-content-start">
               <h1>{{userKeep.name}}</h1>
+              <i class="fas fa-trash hover" @click="deleteKeep(userKeep.id)"></i>
             </div>
             <img class="card-img-top hover" :src="userKeep.img">
             <div class="card-body d-flex justify-content-center">
@@ -120,6 +121,9 @@ export default {
   methods: {
     addKeep() {
       this.$store.dispatch("addKeep", this.newKeep);
+    },
+    deleteKeep(userKeepId) {
+      this.$store.dispatch("deleteKeep", userKeepId);
     }
   },
   components: {

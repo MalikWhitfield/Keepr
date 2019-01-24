@@ -121,6 +121,12 @@ export default new Vuex.Store({
           dispatch('getKeeps')
         })
     },
+    deleteKeep({ commit, dispatch }, userKeepId) {
+      api.delete('keeps/' + userKeepId)
+        .then(res => {
+          dispatch('getKeepsByUserId', res.data)
+        })
+    },
 
     //VAULTS
     getUserVaults({ commit, dispatch }, userId) {
