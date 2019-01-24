@@ -2,7 +2,8 @@
   <div class="container-fluid">
     <navbar></navbar>
     <div class="row">
-      <div class="col-">
+      <div class="col-12">
+        <h1>Your Vault</h1>
         <!-- <h1>{{vault.name}}</h1> -->
       </div>
     </div>
@@ -35,11 +36,11 @@ export default {
   },
   props: ["vaultId"],
   mounted() {
-    this.$store.dispatch("getKeepsByVaultId", this.vaultId);
+    this.$store.dispatch("getVaultKeeps");
   },
   computed: {
     vaultKeeps() {
-      this.$store.state.vaultkeeps;
+      return this.$store.state.vaultkeeps;
     }
   },
   methods: {
