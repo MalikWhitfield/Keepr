@@ -36,11 +36,11 @@ export default {
   },
   props: ["vaultId"],
   mounted() {
-    this.$store.dispatch("getVaultKeeps");
+    this.$store.dispatch("getVaultKeeps", this.vaultId);
   },
   computed: {
     vaultKeeps() {
-      return this.$store.state.vaultkeeps;
+      return this.$store.state.vaultKeeps;
     }
   },
   methods: {
