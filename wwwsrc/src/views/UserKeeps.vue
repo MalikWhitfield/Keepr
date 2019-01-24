@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid bg-size">
     <navbar></navbar>
     <!-- TITLE ROW -->
     <div class="row">
@@ -77,36 +77,38 @@
 
     <!-- USER KEEPS -->
     <div class="row">
-      <div class="col-12 d-flex justify-content-center">
-        <div v-for="userKeep in userKeeps" :key="userKeep.id">
-          <div class="card mb-2 mr-2" style="width: 16rem">
-            <div class="card-header d-flex justify-content-start">
-              <h1>{{userKeep.name}}</h1>
-              <i class="fas fa-trash hover" @click="deleteKeep(userKeep.id)"></i>
-            </div>
-            <img class="card-img-top hover" :src="userKeep.img">
-            <div class="card-body d-flex justify-content-center">
-              <i class="far fa-eye hover">: {{userKeep.views}}</i>
-              <i class="fas fa-camera-retro ml-3">: {{userKeep.vaultAdds}}</i>
-              <!-- <i class="fas fa-plus-square ml-3 hover" onclick="showAddToVault"></i> -->
-              <!-- ADD TO VAULT DROPDOWN -->
-              <div class="dropdown">
-                <button
-                  class="btn btn-secondary dropdown-toggle"
-                  type="button"
-                  id="addToVaultDrop"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >Add To Vault</button>
-                <div class="dropdown-menu" aria-labelledby="addToVaultDrop">
-                  <a
-                    v-for="vault in vaults"
-                    :key="vault.id"
-                    class="dropdown-item hover"
-                    @click="addKeepToVault(payload)"
-                  >{{vault.name}}</a>
-                </div>
+      <div
+        v-for="userKeep in userKeeps"
+        class="col-3-lg col-12-sm d-flex justify-content-center"
+        :key="userKeep.id"
+      >
+        <div class="card mb-2 mr-2" style="width: 16rem">
+          <div class="card-header d-flex justify-content-start">
+            <h4>{{userKeep.name}}</h4>
+            <i class="fas fa-trash hover" @click="deleteKeep(userKeep.id)"></i>
+          </div>
+          <img class="card-img-top hover" :src="userKeep.img">
+          <div class="card-body d-flex justify-content-center">
+            <i class="far fa-eye hover">: {{userKeep.views}}</i>
+            <i class="fas fa-camera-retro ml-3">: {{userKeep.vaultAdds}}</i>
+            <!-- <i class="fas fa-plus-square ml-3 hover" onclick="showAddToVault"></i> -->
+            <!-- ADD TO VAULT DROPDOWN -->
+            <div class="dropdown col-1-sm ml-2">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="addToVaultDrop"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >Add</button>
+              <div class="dropdown-menu" aria-labelledby="addToVaultDrop">
+                <a
+                  v-for="vault in vaults"
+                  :key="vault.id"
+                  class="dropdown-item hover"
+                  @click="$store.dispatch('addKeepToVault', {keepId: userKeep.id, vaultId: vault.id})"
+                >{{vault.name}}</a>
               </div>
             </div>
           </div>
@@ -125,11 +127,14 @@ export default {
       showAddKeep: false,
       newKeep: {
         name: "",
-        descripton: "",
+        description: "",
         img: "",
-        isPrivate: false
+        isPrivate: 0
       },
       showAddToVault: false
+      // creator:{
+      //   if(userKeep.userId == user.id)
+      // },
     };
   },
   mounted() {
@@ -156,13 +161,6 @@ export default {
     },
     deleteKeep(userKeepId) {
       this.$store.dispatch("deleteKeep", userKeepId);
-    },
-    addKeepToVault(payload) {
-      payload: {
-        userKeepId: this.userKeep.id;
-        vaultId: this.vault.id;
-      }
-      this.$store.dispatch("addKeepToVault", payload);
     }
   },
   components: {

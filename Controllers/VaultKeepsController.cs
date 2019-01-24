@@ -61,7 +61,7 @@ namespace Keepr.Controllers
 
 
         //DELETE KEEPS FROM VAULTS
-        [HttpDelete("{id}")]
+        [HttpPut]
         public ActionResult<string> Delete([FromBody]VaultKeep vaultKeep)
         {
             var result = _repo.DeleteVaultKeep(vaultKeep);

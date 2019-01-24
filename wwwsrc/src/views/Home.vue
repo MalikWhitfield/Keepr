@@ -6,10 +6,12 @@
         <h1>Welcome To Keepr!</h1>
       </div>
     </div>
-    <div class="row d-flex justify-content-around">
+
+    <!-- KEEPs -->
+    <div class="row d-flex justify-content-start">
       <div class="col-12"></div>
       <div v-for="keep in keeps" :key="keep.id">
-        <div class="card mb-2" style="width: 16rem">
+        <div class="card mb-2 mr-3" style="width: 16rem">
           <div class="card-header d-flex justify-content-start">
             <h5>{{keep.name}}</h5>
           </div>
@@ -18,6 +20,25 @@
             <i class="far fa-eye">: {{keep.views}}</i>
             <i class="fas fa-camera-retro ml-3">: {{keep.vaultAdds}}</i>
             <i class="fas fa-plus-square ml-3"></i>
+            <!-- ADD TO VAULT DROPDOWN-->
+            <div class="dropdown col-1-sm ml-2">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="addToVaultDrop"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >Add</button>
+              <div class="dropdown-menu" aria-labelledby="addToVaultDrop">
+                <a
+                  v-for="vault in vaults"
+                  :key="vault.id"
+                  class="dropdown-item hover"
+                  @click="$store.dispatch('addKeepToVault', {keepId: keep.id, vaultId: vault.id})"
+                >{{vault.name}}</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -35,6 +56,7 @@ export default {
     //   this.$router.push({ name: "home" });
     // }
     this.$store.dispatch("getAllKeeps");
+    this.$store.dispatch("getUserVaults");
   },
   computed: {
     keeps() {
@@ -42,6 +64,9 @@ export default {
     },
     user() {
       return this.$store.state.user;
+    },
+    vaults() {
+      return this.$store.state.vaults;
     }
   },
   methods: {

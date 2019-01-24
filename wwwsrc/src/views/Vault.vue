@@ -8,11 +8,16 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-12">
+      <div class="col-12 d-flex justify-content-center">
         <div v-for="vaultKeep in vaultKeeps" :key="vaultKeep.id">
-          <div class="card mb-2" style="width: 16rem">
-            <div class="card-header d-flex justify-content-start">
-              <h1>{{vaultKeep.name}}</h1>
+          <div class="card mb-2 mr-4" style="width: 16rem">
+            <div class="card-header d-flex">
+              <div class="d-flex justify-content-start">
+                <h5>{{vaultKeep.name}}</h5>
+              </div>
+              <div class="d-flex justify-content-end">
+                <i class="fas fa-trash hover" @click="deleteVaultKeep(vaultKeep.id)"></i>
+              </div>
             </div>
             <img class="card-img-top hover" :src="vaultKeep.img">
             <div class="card-body d-flex justify-content-center">
@@ -44,8 +49,11 @@ export default {
     }
   },
   methods: {
-    deleteVaultKeep(vaultKeepId) {
-      this.$store.dispatch("deleteVaultKeep", vaultKeepId);
+    deleteVaultKeep(keepId) {
+      this.$store.dispatch("deleteVaultKeep", {
+        keepId,
+        vaultId: this.vaultId
+      });
     }
   },
   components: {
