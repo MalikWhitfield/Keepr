@@ -120,7 +120,6 @@ export default {
       this.$store.dispatch("addVault", this.newVault);
     },
     deleteVault(vaultId) {
-      debugger;
       this.$store.dispatch("deleteVault", vaultId);
     }
   },
