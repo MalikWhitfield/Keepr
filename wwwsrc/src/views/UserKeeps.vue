@@ -3,14 +3,14 @@
     <navbar></navbar>
     <!-- TITLE ROW -->
     <div class="row">
-      <div class="col-12">
+      <div class="col-12 mb-1">
         <h1>My Keeps:</h1>
       </div>
     </div>
 
     <!-- ADD FORM BUTT -->
-    <div class="row d-flex justify-content-center mb-2">
-      <div class="col-12">
+    <div class="row mb-3">
+      <div class="col-12 d-flex justify-content-center">
         <button type="button" class="btn" data-toggle="modal" data-target="#add-keep">Add Keep</button>
       </div>
     </div>
@@ -86,9 +86,28 @@
             </div>
             <img class="card-img-top hover" :src="userKeep.img">
             <div class="card-body d-flex justify-content-center">
-              <i class="far fa-eye">: {{userKeep.views}}</i>
+              <i class="far fa-eye hover">: {{userKeep.views}}</i>
               <i class="fas fa-camera-retro ml-3">: {{userKeep.vaultAdds}}</i>
-              <i class="fas fa-plus-square ml-3"></i>
+              <!-- <i class="fas fa-plus-square ml-3 hover" onclick="showAddToVault"></i> -->
+              <!-- ADD TO VAULT DROPDOWN -->
+              <div class="dropdown">
+                <button
+                  class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  id="addToVaultDrop"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >Add To Vault</button>
+                <div class="dropdown-menu" aria-labelledby="addToVaultDrop">
+                  <a
+                    v-for="vault in vaults"
+                    :key="vault.id"
+                    class="dropdown-item hover"
+                    @click="addKeepToVault(payload)"
+                  >{{vault.name}}</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -100,7 +119,7 @@
 <script>
 import Navbar from "@/components/NavBar.vue";
 export default {
-  name: "",
+  name: "UserKeeps",
   data() {
     return {
       showAddKeep: false,
@@ -109,11 +128,13 @@ export default {
         descripton: "",
         img: "",
         isPrivate: false
-      }
+      },
+      showAddToVault: false
     };
   },
   mounted() {
     this.$store.dispatch("getKeepsByUserId");
+    this.$store.dispatch("getUserVaults");
   },
   computed: {
     user() {
@@ -121,6 +142,9 @@ export default {
     },
     userKeeps() {
       return this.$store.state.userKeeps;
+    },
+    vaults() {
+      return this.$store.state.vaults;
     }
   },
   methods: {
@@ -132,6 +156,13 @@ export default {
     },
     deleteKeep(userKeepId) {
       this.$store.dispatch("deleteKeep", userKeepId);
+    },
+    addKeepToVault(payload) {
+      payload: {
+        userKeepId: this.userKeep.id;
+        vaultId: this.vault.id;
+      }
+      this.$store.dispatch("addKeepToVault", payload);
     }
   },
   components: {

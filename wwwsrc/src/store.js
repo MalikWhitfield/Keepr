@@ -152,7 +152,12 @@ export default new Vuex.Store({
     getVaultKeeps({ commit, dispatch }, vaultId) {
       api.get('vaultkeeps/' + vaultId)
         .then(res => {
-          console.log(res)
+          commit('setVaultKeeps', res.data)
+        })
+    },
+    addKeepToVault({ commit, dispatch }, payload) {
+      api.post('vaultkeeps/' + payload.vaultId)
+        .then(res => {
           commit('setVaultKeeps', res.data)
         })
     }
