@@ -64,6 +64,10 @@
                   v-model="newKeep.img"
                 >
               </div>
+              <div>
+                <p class="mb-0">Private</p>
+                <input type="checkbox" v-model="newKeep.isPrivate">
+              </div>
               <button class="btn" type="submit">Add Keep</button>
             </form>
           </div>
@@ -103,7 +107,8 @@ export default {
       newKeep: {
         name: "",
         descripton: "",
-        img: ""
+        img: "",
+        isPrivate: false
       }
     };
   },
@@ -120,6 +125,9 @@ export default {
   },
   methods: {
     addKeep() {
+      if (this.newKeep.isPrivate) {
+        this.newKeep.isPrivate = 1;
+      }
       this.$store.dispatch("addKeep", this.newKeep);
     },
     deleteKeep(userKeepId) {
