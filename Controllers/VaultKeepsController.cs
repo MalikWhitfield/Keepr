@@ -41,24 +41,6 @@ namespace Keepr.Controllers
             return BadRequest("Unable to create vaultkeep");
         }
 
-        //EDIT VAULT KEEPS
-        #region
-        // [HttpPut("{id}")]
-        // public ActionResult<VaultKeep> Put(int id, [FromBody] VaultKeep VaultKeep)
-        // {
-        //     try
-        //     {
-        //         VaultKeep updatedVaultKeep = _repo.EditVaultKeep(id, VaultKeep);
-        //         return updatedVaultKeep;
-        //     }
-        //     catch (Exception ex)
-        //     {
-        //         Console.WriteLine(ex);
-        //         return NotFound("NO SUCH VaultKeep");
-        //     }
-        // }
-        #endregion
-
 
         //DELETE KEEPS FROM VAULTS
         [HttpPut]
