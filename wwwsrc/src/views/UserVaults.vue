@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid bg-size">
     <navbar></navbar>
     <div class="row">
       <div class="col-12">
@@ -74,12 +74,14 @@
       <div class="col-12 d-flex justify-content-center">
         <div v-for="vault in vaults" :key="vault.id">
           <div class="card mb-2 mr-5" style="width:16rem">
-            <router-link
-              :to="{name: 'Vault', params: {vaultId: vault.id}}"
-              class="card-header d-flex justify-content-center"
-            >
-              <h5>{{vault.name}}</h5>
-            </router-link>
+            <div class="card-header d-flex justify-content-space-between">
+              <router-link :to="{name: 'Vault', params: {vaultId: vault.id}}">
+                <h5>{{vault.name}}</h5>
+              </router-link>
+              <div>
+                <i class="fas fa-trash hover" @click="deleteVault(vault.id)"></i>
+              </div>
+            </div>
             <img class="card-img-top hover" :src="vault.img">
             <div class="card-body">{{vault.description}}</div>
           </div>
@@ -116,6 +118,10 @@ export default {
   methods: {
     addVault() {
       this.$store.dispatch("addVault", this.newVault);
+    },
+    deleteVault(vaultId) {
+      debugger;
+      this.$store.dispatch("deleteVault", vaultId);
     }
   },
   components: {
@@ -128,5 +134,8 @@ export default {
 .card-style {
   width: 16rem;
   height: 16rem;
+}
+.bg-size {
+  height: 100vh;
 }
 </style>

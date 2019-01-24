@@ -7,6 +7,7 @@
       </div>
     </div>
     <div class="row d-flex justify-content-around">
+      <div class="col-12"></div>
       <div v-for="keep in keeps" :key="keep.id">
         <div class="card mb-2" style="width: 16rem">
           <div class="card-header d-flex justify-content-start">

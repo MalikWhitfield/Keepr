@@ -16,7 +16,7 @@
               v-if="user.id"
               class="nav-btn mr-3"
               :to="{name: 'UserVaults'}"
-            >{{user.username}} Vault</router-link>
+            >{{user.username}} Vaults</router-link>
             <router-link
               v-if="user.id"
               class="nav-btn hover mr-3"
