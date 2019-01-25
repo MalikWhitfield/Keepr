@@ -49,6 +49,9 @@ export default new Vuex.Store({
     },
     setViewedUser(state, viewedUser) {
       state.viewedUser = viewedUser
+    },
+    setActiveKeep(state, activeKeep) {
+      state.activeKeep = activeKeep
     }
   },
   actions: {
@@ -125,7 +128,7 @@ export default new Vuex.Store({
     getActiveKeep({ commit, dispatch }, keepId) {
       api.get('keeps/' + keepId)
         .then(res => {
-          commit('setActiveKeep')
+          commit('setActiveKeep', res.data)
         })
     },
 

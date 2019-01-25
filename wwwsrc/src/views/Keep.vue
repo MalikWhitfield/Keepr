@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid bg-size">
     <navbar></navbar>
     <img :src="activeKeep.img">
     <h3>{{activeKeep.name}}</h3>
