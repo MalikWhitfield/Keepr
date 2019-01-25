@@ -73,7 +73,6 @@ export default {
       this.$store.dispatch("logout");
     },
     addKeepToVault(vaultId, keep) {
-      debugger;
       let payload = {
         vk: {
           vaultId,

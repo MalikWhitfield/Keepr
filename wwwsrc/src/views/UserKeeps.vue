@@ -163,7 +163,6 @@ export default {
       this.$store.dispatch("deleteKeep", userKeepId);
     },
     addKeepToVault(vaultId, keep) {
-      debugger;
       let payload = {
         vk: {
           vaultId,
