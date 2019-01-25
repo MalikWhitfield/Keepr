@@ -1,9 +1,21 @@
 <template>
   <div class="container-fluid bg-size">
     <navbar></navbar>
-    <img :src="activeKeep.img">
-    <h3>{{activeKeep.name}}</h3>
-    <p>{{activeKeep.description}}</p>
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col-10 d-flex justify-content-center">
+        <div class="card mt-3 activeKeepImg">
+          <div class="card-header">
+            <h5>{{activeKeep.name}}</h5>
+          </div>
+          <img :src="activeKeep.img" class="card-img-top">
+          <div class="card-body">
+            <p>{{activeKeep.description}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-1"></div>
+    </div>
   </div>
 </template>
 
@@ -34,4 +46,8 @@ export default {
 </script>
 
 <style>
+.activeKeepImg {
+  max-width: 75vw;
+  max-width: 75vh;
+}
 </style>
