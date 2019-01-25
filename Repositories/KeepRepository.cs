@@ -45,8 +45,7 @@ namespace keepr.Repositories
                 shares = @Shares,
                 views = @Views,
                 keeps = @Keeps
-                SELECT * FROM keeps WHERE id= @Id AND userId = @UserId, newKeep)
-                ");
+                SELECT * FROM keeps WHERE id= @Id AND userId = @UserId", newKeep);
             return newKeep;
 
         }
