@@ -13,7 +13,7 @@
       <div v-for="keep in keeps" :key="keep.id">
         <div class="card mb-2 mr-3" style="width: 16rem">
           <div class="card-header d-flex justify-content-start">
-            <h5>{{keep.name}}</h5>
+            <h6>{{keep.name}}</h6>
           </div>
           <img
             class="card-img-top hover card-images"

@@ -8,6 +8,7 @@ import UserVaults from './views/UserVaults.vue'
 import Vault from './views/Vault.vue'
 import UserKeeps from './views/UserKeeps.vue'
 import Keep from './views/Keep.vue'
+import Dashboard from './views/Dashboard.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -43,6 +44,11 @@ export default new Router({
       name: 'Keep',
       props: true,
       component: Keep
+    },
+    {
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: Dashboard
     }
   ]
 })
