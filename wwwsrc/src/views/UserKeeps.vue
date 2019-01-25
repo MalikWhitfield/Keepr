@@ -107,7 +107,7 @@
                   v-for="vault in vaults"
                   :key="vault.id"
                   class="dropdown-item hover"
-                  @click="addKeepToVault(vault.Id)"
+                  @click="addKeepToVault(vault.id, userKeep)"
                 >{{vault.name}}</a>
               </div>
             </div>
@@ -162,14 +162,16 @@ export default {
     deleteKeep(userKeepId) {
       this.$store.dispatch("deleteKeep", userKeepId);
     },
-    addKeepToVault(vaultId) {
+    addKeepToVault(vaultId, keep) {
+      debugger;
       let payload = {
         vk: {
           vaultId,
-          keepId: this.userKeep.id
+          keepId: keep.id
         },
-        keep: this.userKeep
+        keep
       };
+      this.$store.dispatch("addKeepToVault", payload);
     }
   },
   components: {

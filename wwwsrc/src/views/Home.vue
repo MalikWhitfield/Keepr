@@ -1,5 +1,5 @@
 <template>
-  <div class="home bg-color container-fluid">
+  <div class="home bg-color bg-size container-fluid">
     <navbar></navbar>
     <div class="row">
       <div class="col-12">
@@ -38,7 +38,7 @@
                   v-for="vault in vaults"
                   :key="vault.id"
                   class="dropdown-item hover"
-                  @click="addKeepToVault(vault.id)"
+                  @click="addKeepToVault(vault.id, keep)"
                 >{{vault.name}}</a>
               </div>
             </div>
@@ -72,14 +72,16 @@ export default {
     logout() {
       this.$store.dispatch("logout");
     },
-    addToKeepToVault(vaultId) {
+    addKeepToVault(vaultId, keep) {
+      debugger;
       let payload = {
         vk: {
           vaultId,
-          keepId: this.keep.id
-        }
+          keepId: keep.id
+        },
+        keep
       };
-      keep: this.keep;
+      this.$store.dispatch("addKeepToVault", payload);
     }
   },
   components: {
@@ -97,6 +99,9 @@ export default {
 }
 .hover {
   cursor: pointer;
+}
+.bg-size {
+  height: 100vh;
 }
 .card-images {
   min-height: 14rem;
