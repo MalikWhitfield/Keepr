@@ -44,7 +44,7 @@ namespace keepr.Repositories
                 isPrivate = @isPrivate,
                 shares = @Shares,
                 views = @Views,
-                vaultAdds = @VaultAdds
+                keeps = @Keeps
                 SELECT * FROM keeps WHERE id= @Id AND userId = @UserId, newKeep)
                 ");
             return newKeep;

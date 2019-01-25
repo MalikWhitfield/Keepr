@@ -49,6 +49,7 @@ export default {
   mounted() {
     this.$store.dispatch("getActiveKeep", this.$route.params.keepId);
     this.$store.dispatch("getUserVaults");
+    this.editKeepViews();
   },
   computed: {
     activeKeep() {
@@ -71,6 +72,30 @@ export default {
         keep: this.activeKeep
       };
       this.$store.dispatch("addKeepToVault", payload);
+    },
+    editKeepViews() {
+      let payload = {
+        id: this.activeKeep.id,
+        img: this.activeKeep.img,
+        isPrivate: this.activeKeep.isPrivate,
+        userId: this.activeKeep.userId,
+        shares: this.activeKeep.shares,
+        views: this.activeKeep.views + 1,
+        keeps: this.activeKeep.keeps
+      };
+      this.$store.dispatch("editKeep", payload);
+    },
+    editKeepKeeps() {
+      let payload = {
+        id: this.activeKeep.id,
+        img: this.activeKeep.img,
+        isPrivate: this.activeKeep.isPrivate,
+        userId: this.activeKeep.userId,
+        shares: this.activeKeep.shares,
+        views: this.activeKeep.views,
+        keeps: this.activeKeep.keeps + 1
+      };
+      this.$store.dispatch("editKeep", payload);
     }
   },
   components: {

@@ -87,7 +87,11 @@
             <h4>{{userKeep.name}}</h4>
             <i class="fas fa-trash hover" @click="deleteKeep(userKeep.id)"></i>
           </div>
-          <img class="card-img-top hover" :src="userKeep.img">
+          <img
+            class="card-img-top hover"
+            :src="userKeep.img"
+            @click="$router.push({name: 'Keep', params : {keepId: userKeep.id}})"
+          >
           <div class="card-body d-flex justify-content-center">
             <i class="far fa-eye hover">: {{userKeep.views}}</i>
             <i class="fas fa-camera-retro ml-3">: {{userKeep.vaultAdds}}</i>
