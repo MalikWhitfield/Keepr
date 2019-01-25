@@ -8,14 +8,18 @@
     </div>
 
     <!-- KEEPs -->
-    <div class="row d-flex justify-content-start">
+    <div class="row d-flex justify-content-center">
       <div class="col-12"></div>
       <div v-for="keep in keeps" :key="keep.id">
         <div class="card mb-2 mr-3" style="width: 16rem">
           <div class="card-header d-flex justify-content-start">
             <h5>{{keep.name}}</h5>
           </div>
-          <img class="card-img-top hover card-images" :src="keep.img">
+          <img
+            class="card-img-top hover card-images"
+            @click="$router.push({name: 'Keep', params: {keepId: keep.id}})"
+            :src="keep.img"
+          >
           <div class="card-body d-flex justify-content-center">
             <i class="far fa-eye">: {{keep.views}}</i>
             <i class="fas fa-camera-retro ml-3">: {{keep.vaultAdds}}</i>

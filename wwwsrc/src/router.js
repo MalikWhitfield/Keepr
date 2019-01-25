@@ -7,6 +7,7 @@ import Login from './views/Login.vue'
 import UserVaults from './views/UserVaults.vue'
 import Vault from './views/Vault.vue'
 import UserKeeps from './views/UserKeeps.vue'
+import Keep from './views/Keep.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -36,6 +37,12 @@ export default new Router({
       path: '/myKeeps',
       name: 'UserKeeps',
       component: UserKeeps
+    },
+    {
+      path: '/keep/:keepId',
+      name: 'Keep',
+      props: true,
+      component: Keep
     }
   ]
 })

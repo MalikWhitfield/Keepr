@@ -40,6 +40,17 @@ namespace Keepr.Controllers
             return BadRequest();
         }
 
+        // GET INDIVIDUAL KEEP
+        [HttpGet("{id}")]
+        public ActionResult<Keep> Get(int id)
+        {
+            Keep result = _repo.GetKeepById(id);
+            if (result != null)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+        }
 
         //POST A KEEP
         [Authorize]
@@ -52,21 +63,21 @@ namespace Keepr.Controllers
 
         }
 
-        //EDIT INDIVIDUAL KEEPS
-        [HttpPut("{id}")]
-        public ActionResult<Keep> Put(int id, [FromBody] Keep keep)
-        {
-            try
-            {
-                Keep updatedKeep = _repo.EditKeep(id, keep);
-                return updatedKeep;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                return NotFound("NO SUCH KEEP");
-            }
-        }
+        // //EDIT INDIVIDUAL KEEPS
+        // [HttpPut("{id}")]
+        // public ActionResult<Keep> Put(int id, [FromBody] Keep keep)
+        // {
+        //     try
+        //     {
+        //         Keep updatedKeep = _repo.EditKeep(id, keep);
+        //         return updatedKeep;
+        //     }
+        //     catch (Exception ex)
+        //     {
+        //         Console.WriteLine(ex);
+        //         return NotFound("NO SUCH KEEP");
+        //     }
+        // }
 
 
 

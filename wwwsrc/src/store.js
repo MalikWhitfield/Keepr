@@ -122,6 +122,12 @@ export default new Vuex.Store({
           dispatch('getKeepsByUserId', res.data)
         })
     },
+    getActiveKeep({ commit, dispatch }, keepId) {
+      api.get('keeps/' + keepId)
+        .then(res => {
+          commit('setActiveKeep')
+        })
+    },
 
     //VAULTS
     getUserVaults({ commit, dispatch }, userId) {
