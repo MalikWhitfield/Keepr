@@ -129,6 +129,8 @@ export default new Vuex.Store({
       api.get('keeps/' + keepId)
         .then(res => {
           commit('setActiveKeep', res.data)
+          res.data.views++
+          dispatch("editKeep", res.data)
         })
     },
     editKeep({ commit, dispatch }, payload) {

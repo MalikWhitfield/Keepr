@@ -39,13 +39,14 @@ namespace keepr.Repositories
         public Keep EditKeep(int id, Keep newKeep)
         {
 
-            _db.QueryFirstOrDefault<Keep>(@"
+            _db.Execute(@"
                 UPDATE Keeps SET
                 isPrivate = @isPrivate,
                 shares = @Shares,
                 views = @Views,
                 keeps = @Keeps
-                SELECT * FROM keeps WHERE id= @Id AND userId = @UserId", newKeep);
+                WHERE id = @Id AND userId = @userId;
+                ", newKeep);
             return newKeep;
 
         }

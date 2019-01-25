@@ -49,7 +49,6 @@ export default {
   mounted() {
     this.$store.dispatch("getActiveKeep", this.$route.params.keepId);
     this.$store.dispatch("getUserVaults");
-    this.editKeepViews();
   },
   computed: {
     activeKeep() {

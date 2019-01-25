@@ -95,7 +95,7 @@
           <div class="card-body d-flex justify-content-center">
             <i class="far fa-eye hover">: {{userKeep.views}}</i>
             <i class="fas fa-camera-retro ml-3">: {{userKeep.vaultAdds}}</i>
-            <!-- <i class="fas fa-plus-square ml-3 hover" onclick="showAddToVault"></i> -->
+            <!-- <i class="fas fa-plus-square ml-3 hover" onclick="{{!userKeep.isPrivate}}"></i> -->
             <!-- ADD TO VAULT DROPDOWN -->
             <div class="dropdown col-1-sm ml-2">
               <button
