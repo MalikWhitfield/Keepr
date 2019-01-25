@@ -12,6 +12,25 @@
           <div class="card-body">
             <p>{{activeKeep.description}}</p>
           </div>
+          <!-- ADD TO VAULT MODAL -->
+          <div class="dropdown col-1-sm ml-2">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="addToVaultDrop"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >Add</button>
+            <div class="dropdown-menu" aria-labelledby="addToVaultDrop">
+              <a
+                v-for="vault in vaults"
+                :key="vault.id"
+                class="dropdown-item hover"
+                @click="$store.dispatch('addKeepToVault', {keepId: keep.id, vaultId: vault.id})"
+              >{{vault.name}}</a>
+            </div>
+          </div>
         </div>
       </div>
       <div class="col-1"></div>
@@ -29,6 +48,7 @@ export default {
   props: ["keepId"],
   mounted() {
     this.$store.dispatch("getActiveKeep", this.$route.params.keepId);
+    this.$store.dispatch("getUserVaults");
   },
   computed: {
     activeKeep() {
@@ -36,6 +56,9 @@ export default {
     },
     user() {
       return this.$store.state.user;
+    },
+    vaults() {
+      return this.$store.state.vaults;
     }
   },
   methods: {},

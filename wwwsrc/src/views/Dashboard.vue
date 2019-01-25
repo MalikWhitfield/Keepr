@@ -23,7 +23,17 @@ export default {
   data() {
     return {};
   },
-  computed: {},
+  mounted() {
+    this.$store.dispatch("getUserVaults");
+  },
+  computed: {
+    user() {
+      return this.$store.state.user;
+    },
+    vaults() {
+      return this.store.state.vaults;
+    }
+  },
   methods: {},
   components: {
     Navbar
