@@ -63,22 +63,12 @@ namespace Keepr.Controllers
 
         }
 
-        // //EDIT INDIVIDUAL KEEPS
-        // [HttpPut("{id}")]
-        // public ActionResult<Keep> Put(int id, [FromBody] Keep keep)
-        // {
-        //     try
-        //     {
-        //         Keep updatedKeep = _repo.EditKeep(id, keep);
-        //         return updatedKeep;
-        //     }
-        //     catch (Exception ex)
-        //     {
-        //         Console.WriteLine(ex);
-        //         return NotFound("NO SUCH KEEP");
-        //     }
-        // }
-
+        [Authorize]
+        [HttpPut("{id}")]
+        public Keep Put(int id, [FromBody] Keep newKeep)
+        {
+            return _repo.EditKeep(id, newKeep);
+        }
 
 
         [HttpDelete("{id}")]

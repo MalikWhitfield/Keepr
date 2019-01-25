@@ -25,6 +25,9 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getUserVaults");
+    if (!this.$store.state.user.id) {
+      this.$router.push({ name: "login" });
+    }
   },
   computed: {
     user() {

@@ -12,7 +12,7 @@
           <!-- ALL BUTTONS BESIDES KEEPR -->
           <div class="col-10 d-flex justify-content-end">
             <router-link class="nav-btn mr-3" :to="{name: 'home'}">Home</router-link>
-            <router-link class="nav-btn mr-3" :to="{name: 'Dashboard'}">{{user.name}}Dashboard</router-link>
+            <router-link class="nav-btn mr-3" :to="{name: 'Dashboard'}">{{user.username}} Dashboard</router-link>
             <router-link v-if="!user.id" class="nav-btn hover" :to="{name: 'login'}">Login</router-link>
             <a v-if="user.id" class="nav-btn hover" @click="logout">Logout</a>
           </div>

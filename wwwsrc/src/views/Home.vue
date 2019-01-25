@@ -38,7 +38,7 @@
                   v-for="vault in vaults"
                   :key="vault.id"
                   class="dropdown-item hover"
-                  @click="$store.dispatch('addKeepToVault', {keepId: keep.id, vaultId: vault.id})"
+                  @click="addKeepToVault(vault.id)"
                 >{{vault.name}}</a>
               </div>
             </div>
@@ -54,10 +54,6 @@ import Navbar from "@/components/NavBar.vue";
 export default {
   name: "home",
   mounted() {
-    //blocks users not logged in
-    // if (!this.$store.state.user.id) {
-    //   this.$router.push({ name: "home" });
-    // }
     this.$store.dispatch("getAllKeeps");
     this.$store.dispatch("getUserVaults");
   },
@@ -75,6 +71,15 @@ export default {
   methods: {
     logout() {
       this.$store.dispatch("logout");
+    },
+    addToKeepToVault(vaultId) {
+      let payload = {
+        vk: {
+          vaultId,
+          keepId: this.keep.id
+        }
+      };
+      keep: this.keep;
     }
   },
   components: {

@@ -27,7 +27,7 @@
                 v-for="vault in vaults"
                 :key="vault.id"
                 class="dropdown-item hover"
-                @click="$store.dispatch('addKeepToVault', {keepId: keep.id, vaultId: vault.id})"
+                @click="addKeepToVault(vault.id)"
               >{{vault.name}}</a>
             </div>
           </div>
@@ -61,7 +61,18 @@ export default {
       return this.$store.state.vaults;
     }
   },
-  methods: {},
+  methods: {
+    addKeepToVault(vaultId) {
+      let payload = {
+        vk: {
+          vaultId,
+          keepId: this.activeKeep.id
+        },
+        keep: this.activeKeep
+      };
+      this.$store.dispatch("addKeepToVault", payload);
+    }
+  },
   components: {
     Navbar
   }

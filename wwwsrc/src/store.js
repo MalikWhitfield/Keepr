@@ -101,6 +101,7 @@ export default new Vuex.Store({
         })
     },
     addKeep({ commit, dispatch }, newKeep) {
+      debugger
       api.post('keeps', newKeep)
         .then(res => {
           // dispatch('getKeeps')
@@ -129,6 +130,12 @@ export default new Vuex.Store({
       api.get('keeps/' + keepId)
         .then(res => {
           commit('setActiveKeep', res.data)
+        })
+    },
+    editKeep({ commit, dispatch }, payload) {
+      api.put('keeps/' + payload.keepId)
+        .then(res => {
+          commit('setKeeps', res.data)
         })
     },
 
@@ -160,9 +167,11 @@ export default new Vuex.Store({
         })
     },
     addKeepToVault({ commit, dispatch }, payload) {
-      api.post('vaultkeeps/', payload)
+      debugger
+      api.post('vaultkeeps/', payload.vk)
         .then(res => {
           console.log("Added To Vault!")
+          dispatch('editKeep', payload.keep)
           commit('setVaultKeeps', res.data)
         })
     },
