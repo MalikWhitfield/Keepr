@@ -9,37 +9,39 @@
 
     <!-- KEEPs -->
     <div class="row d-flex justify-content-center">
-      <div class="col-12"></div>
-      <div v-for="keep in keeps" :key="keep.id">
-        <div class="card mb-2 mr-3" style="width: 16rem">
-          <div class="card-header d-flex justify-content-start">
-            <h6>{{keep.name}}</h6>
-          </div>
-          <img
-            class="card-img-top hover card-images"
-            @click="$router.push({name: 'Keep', params: {keepId: keep.id}})"
-            :src="keep.img"
-          >
-          <div class="card-body d-flex justify-content-center">
-            <i class="far fa-eye">: {{keep.views}}</i>
-            <i class="fas fa-camera-retro ml-3">: {{keep.keeps}}</i>
-            <!-- ADD TO VAULT DROPDOWN-->
-            <div class="dropdown col-1-sm ml-2">
-              <button
-                class="btn btn-secondary dropdown-toggle"
-                type="button"
-                id="addToVaultDrop"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >Add</button>
-              <div class="dropdown-menu" aria-labelledby="addToVaultDrop">
-                <a
-                  v-for="vault in vaults"
-                  :key="vault.id"
-                  class="dropdown-item hover"
-                  @click="addKeepToVault(vault.id, keep)"
-                >{{vault.name}}</a>
+      <div class="card-columns">
+        <div class="col-12"></div>
+        <div v-for="keep in keeps" :key="keep.id">
+          <div class="card mb-2 mr-3" style="width: 16rem">
+            <div class="card-header d-flex justify-content-start">
+              <h6>{{keep.name}}</h6>
+            </div>
+            <img
+              class="card-img-top hover card-images"
+              @click="$router.push({name: 'Keep', params: {keepId: keep.id}})"
+              :src="keep.img"
+            >
+            <div class="card-body d-flex justify-content-center">
+              <i class="far fa-eye">: {{keep.views}}</i>
+              <i class="fas fa-camera-retro ml-3">: {{keep.keeps}}</i>
+              <!-- ADD TO VAULT DROPDOWN-->
+              <div class="dropdown col-1-sm ml-2">
+                <button
+                  class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  id="addToVaultDrop"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >Add</button>
+                <div class="dropdown-menu" aria-labelledby="addToVaultDrop">
+                  <a
+                    v-for="vault in vaults"
+                    :key="vault.id"
+                    class="dropdown-item hover"
+                    @click="addKeepToVault(vault.id, keep)"
+                  >{{vault.name}}</a>
+                </div>
               </div>
             </div>
           </div>
