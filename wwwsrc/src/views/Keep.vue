@@ -106,6 +106,6 @@ export default {
 <style>
 .activeKeepImg {
   max-width: 75vw;
-  max-width: 75vh;
+  max-height: 75vh;
 }
 </style>

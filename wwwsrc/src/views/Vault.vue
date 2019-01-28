@@ -22,7 +22,7 @@
             <img class="card-img-top hover" :src="vaultKeep.img">
             <div class="card-body d-flex justify-content-center">
               <i class="far fa-eye">: {{vaultKeep.views}}</i>
-              <i class="fas fa-camera-retro ml-3">: {{vaultKeep.vaultAdds}}</i>
+              <i class="fas fa-camera-retro ml-3">: {{vaultKeep.keeps}}</i>
               <i class="fas fa-plus-square ml-3"></i>
             </div>
           </div>

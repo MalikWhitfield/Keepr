@@ -22,7 +22,7 @@
           >
           <div class="card-body d-flex justify-content-center">
             <i class="far fa-eye">: {{keep.views}}</i>
-            <i class="fas fa-camera-retro ml-3">: {{keep.vaultAdds}}</i>
+            <i class="fas fa-camera-retro ml-3">: {{keep.keeps}}</i>
             <!-- ADD TO VAULT DROPDOWN-->
             <div class="dropdown col-1-sm ml-2">
               <button

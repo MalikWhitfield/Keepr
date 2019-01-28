@@ -172,7 +172,9 @@ export default new Vuex.Store({
       api.post('vaultkeeps/', payload.vk)
         .then(res => {
           console.log("Added To Vault!")
+          res.data.keeps++
           commit('setVaultKeeps', res.data)
+          dispatch('editKeep', res.data)
           // dispatch('editKeep', payload.keep)
         })
     },
