@@ -30,25 +30,24 @@
                 >: {{keep.keeps}}</i>
               </div>
               <!-- ADD TO VAULT DROPDOWN-->
-              <!-- <div class="dropdown col-1-sm ml-2">
-                  <button
-                    class="btn btn-secondary dropdown-toggle"
-                    type="button"
-                    id="addToVaultDrop"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >Add</button>
-                  <div class="dropdown-menu" aria-labelledby="addToVaultDrop">
-                    <a
-                      v-for="vault in vaults"
-                      :key="vault.id"
-                      class="dropdown-item hover"
-                      @click="addKeepToVault(vault.id, keep)"
-                    >{{vault.name}}</a>
-                  </div>
-              </div>-->
-              <!-- </div> -->
+              <div class="dropdown col-1-sm ml-2">
+                <button
+                  class="btn btn-secondary dropdown-toggle hover-show img-info bottom-middle"
+                  type="button"
+                  id="addToVaultDrop"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >Add</button>
+                <div class="dropdown-menu" aria-labelledby="addToVaultDrop">
+                  <a
+                    v-for="vault in vaults"
+                    :key="vault.id"
+                    class="dropdown-item hover"
+                    @click="addKeepToVault(vault.id, keep)"
+                  >{{vault.name}}</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
