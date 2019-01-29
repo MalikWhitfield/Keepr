@@ -56,8 +56,13 @@
               class="nav-btn mr-3 hover"
               @click="$router.push({name: 'Dashboard'})"
               style="color: white"
-            >{{user.username}} Dashboard</a>
-            <a v-if="!user.id" class="nav-btn hover" @click="$router.push({name: 'login'})">Login</a>
+            >Dashboard</a>
+            <a
+              v-if="!user.id"
+              class="nav-btn hover"
+              @click="$router.push({name: 'login'})"
+              style="color: white"
+            >Login</a>
             <a v-if="user.id" class="nav-btn hover" style="color: white" @click="logout">Logout</a>
           </div>
         </nav>

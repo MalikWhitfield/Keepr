@@ -78,16 +78,17 @@
         class="col-3-lg col-12-sm d-flex justify-content-center"
       >
         <div class="card mb-2 mr-2" style="width:16rem">
-          <div class="card-header d-flex justify-content-space-between">
+          <div class="card-header d-flex">
             <router-link :to="{name: 'Vault', params: {vaultId: vault.id}}">
               <h5>{{vault.name}}</h5>
             </router-link>
-            <div>
-              <i class="fas fa-trash hover" @click="deleteVault(vault.id)"></i>
-            </div>
           </div>
           <img class="card-img-top hover" :src="vault.img">
-          <div class="card-body">{{vault.description}}</div>
+          <i
+            class="fas fa-trash hover d-flex justify-content-center"
+            @click="deleteVault(vault.id)"
+          ></i>
+          <!-- <div class="card-body">{{vault.description}}</div> -->
         </div>
       </div>
     </div>
