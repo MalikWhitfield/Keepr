@@ -83,10 +83,10 @@
         :key="userKeep.id"
       >
         <div class="card mb-2 mr-2" style="width: 16rem">
-          <div class="card-header d-flex justify-content-start">
-            <h4>{{userKeep.name}}</h4>
-            <i class="fas fa-trash hover" @click="deleteKeep(userKeep.id)"></i>
-          </div>
+          <!-- <div class="card-header d-flex justify-content-start">
+          <h4>{{userKeep.name}}</h4>-->
+          <i class="fas fa-trash hover" @click="deleteKeep(userKeep.id)"></i>
+          <!-- </div> -->
           <img
             class="card-img-top hover"
             :src="userKeep.img"

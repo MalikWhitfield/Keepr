@@ -3,7 +3,7 @@
     <navbar></navbar>
     <div class="row">
       <div class="col-12">
-        <h1>Welcome To Keepr!</h1>
+        <h1 class="header-font">K</h1>
       </div>
     </div>
 
@@ -30,7 +30,7 @@
                 >: {{keep.keeps}}</i>
               </div>
               <!-- ADD TO VAULT DROPDOWN-->
-              <div class="dropdown col-1-sm ml-2">
+              <!-- <div class="dropdown col-1-sm ml-2">
                 <button
                   class="btn btn-secondary dropdown-toggle hover-show img-info bottom-middle"
                   type="button"
@@ -47,7 +47,7 @@
                     @click="addKeepToVault(vault.id, keep)"
                   >{{vault.name}}</a>
                 </div>
-              </div>
+              </div>-->
             </div>
           </div>
         </div>
@@ -126,6 +126,10 @@ export default {
   background-color: rgba(255, 255, 255, 0.452);
   border-radius: 2px;
   color: black;
+}
+.header-font {
+  font-family: "Permanent Marker", cursive;
+  color: #339989;
 }
 
 .hover-wrapper:hover .hover-show {

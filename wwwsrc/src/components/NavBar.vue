@@ -47,9 +47,17 @@
           </div>-->
           <!-- ALL BUTTONS BESIDES KEEPR -->
           <div class="col-10 d-flex justify-content-end">
-            <router-link class="nav-btn mr-3" :to="{name: 'home'}">Home</router-link>
-            <router-link class="nav-btn mr-3" :to="{name: 'Dashboard'}">{{user.username}} Dashboard</router-link>
-            <router-link v-if="!user.id" class="nav-btn hover" :to="{name: 'login'}">Login</router-link>
+            <a
+              class="nav-btn mr-3 hover"
+              @click="$router.push({name: 'home'})"
+              style="color: white"
+            >Home</a>
+            <a
+              class="nav-btn mr-3 hover"
+              @click="$router.push({name: 'Dashboard'})"
+              style="color: white"
+            >{{user.username}} Dashboard</a>
+            <a v-if="!user.id" class="nav-btn hover" @click="$router.push({name: 'login'})">Login</a>
             <a v-if="user.id" class="nav-btn hover" style="color: white" @click="logout">Logout</a>
           </div>
         </nav>
@@ -90,6 +98,6 @@ export default {
 }
 
 .nav-background {
-  background-color: #339989;
+  background-color: #00927c;
 }
 </style>
