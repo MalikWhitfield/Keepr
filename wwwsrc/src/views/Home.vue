@@ -58,6 +58,7 @@
 
 <script>
 import Navbar from "@/components/NavBar.vue";
+import Nav from "@/components/Nav.vue";
 export default {
   name: "home",
   mounted() {
@@ -91,7 +92,8 @@ export default {
     }
   },
   components: {
-    Navbar
+    Navbar,
+    Nav
   }
 };
 </script>
