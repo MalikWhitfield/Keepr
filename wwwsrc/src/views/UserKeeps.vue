@@ -93,8 +93,12 @@
             @click="$router.push({name: 'Keep', params : {keepId: userKeep.id}})"
           >
           <div class="card-body d-flex justify-content-center">
-            <i class="far fa-eye hover">: {{userKeep.views}}</i>
-            <i class="fas fa-camera-retro ml-3">: {{userKeep.keeps}}</i>
+            <div class="hover-wrapper">
+              <i class="far fa-eye hover hover-show img-info bottom-middle">: {{userKeep.views}}</i>
+              <i
+                class="fas fa-camera-retro ml-3 hover-show img-info bottom-middle"
+              >: {{userKeep.keeps}}</i>
+            </div>
             <!-- <i class="fas fa-plus-square ml-3 hover" onclick="{{!userKeep.isPrivate}}"></i> -->
             <!-- ADD TO VAULT DROPDOWN -->
             <div class="dropdown col-1-sm ml-2">
