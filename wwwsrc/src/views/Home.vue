@@ -3,13 +3,13 @@
     <navbar></navbar>
     <div class="row">
       <div class="col-12">
-        <h1 class="header-font">K</h1>
+        <!-- <h1 class="header-font">K</h1> -->
       </div>
     </div>
 
     <!-- KEEPs -->
     <div class="d-flex justify-content-center">
-      <div class="card-columns" style="width: 95%">
+      <div class="card-columns mt-2" style="width: 95%">
         <!-- <div class="col-12"></div> -->
         <div v-for="keep in keeps" :key="keep.id">
           <div class="col pl-0 pr-0">
