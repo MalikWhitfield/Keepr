@@ -70,21 +70,24 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-12 d-flex justify-content-center">
-        <div v-for="vault in vaults" :key="vault.id">
-          <div class="card mb-2 mr-5" style="width:16rem">
-            <div class="card-header d-flex justify-content-space-between">
-              <router-link :to="{name: 'Vault', params: {vaultId: vault.id}}">
-                <h5>{{vault.name}}</h5>
-              </router-link>
-              <div>
-                <i class="fas fa-trash hover" @click="deleteVault(vault.id)"></i>
-              </div>
+    <!-- USER VAULTS -->
+    <div class="row d-flex justify-content-center">
+      <div
+        v-for="vault in vaults"
+        :key="vault.id"
+        class="col-3-lg col-12-sm d-flex justify-content-center"
+      >
+        <div class="card mb-2 mr-2" style="width:16rem">
+          <div class="card-header d-flex justify-content-space-between">
+            <router-link :to="{name: 'Vault', params: {vaultId: vault.id}}">
+              <h5>{{vault.name}}</h5>
+            </router-link>
+            <div>
+              <i class="fas fa-trash hover" @click="deleteVault(vault.id)"></i>
             </div>
-            <img class="card-img-top hover" :src="vault.img">
-            <div class="card-body">{{vault.description}}</div>
           </div>
+          <img class="card-img-top hover" :src="vault.img">
+          <div class="card-body">{{vault.description}}</div>
         </div>
       </div>
     </div>

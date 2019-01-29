@@ -16,7 +16,7 @@
           </div>
 
           <!-- COLLAPSE CONTENT-->
-          <button
+          <!-- <button
             class="navbar-toggler"
             type="button"
             data-toggle="collapse"
@@ -44,14 +44,14 @@
                 <a class="nav-link nav-btn" href="#" @click="logout" v-if="user.id">Logout</a>
               </li>
             </ul>
-          </div>
+          </div>-->
           <!-- ALL BUTTONS BESIDES KEEPR -->
-          <!-- <div class="col-10 d-flex justify-content-end">
+          <div class="col-10 d-flex justify-content-end">
             <router-link class="nav-btn mr-3" :to="{name: 'home'}">Home</router-link>
             <router-link class="nav-btn mr-3" :to="{name: 'Dashboard'}">{{user.username}} Dashboard</router-link>
             <router-link v-if="!user.id" class="nav-btn hover" :to="{name: 'login'}">Login</router-link>
             <a v-if="user.id" class="nav-btn hover" style="color: white" @click="logout">Logout</a>
-          </div>-->
+          </div>
         </nav>
       </div>
     </div>
