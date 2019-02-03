@@ -19,7 +19,11 @@
                 <i class="fas fa-trash hover" @click="deleteVaultKeep(vaultKeep.id)"></i>
               </div>
             </div>
-            <img class="card-img-top hover" :src="vaultKeep.img">
+            <img
+              class="card-img-top hover"
+              :src="vaultKeep.img"
+              @click="$router.push({name: 'Keep', params : {keepId: vaultKeep.id}})"
+            >
             <div class="card-body d-flex justify-content-center">
               <i class="far fa-eye">: {{vaultKeep.views}}</i>
               <i class="fas fa-camera-retro ml-3">: {{vaultKeep.keeps}}</i>
